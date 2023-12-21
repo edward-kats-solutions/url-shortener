@@ -1,0 +1,12 @@
+spring:
+  cassandra:
+    contact-points: ${CASSANDRA_HOST}
+    port: 9042
+    local-datacenter: datacenter1
+    keyspace-name: defaultKeyspace
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: 6379
+server:
+  port: 8080

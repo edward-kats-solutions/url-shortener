@@ -1,0 +1,14 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  cassandra:
+    contact-points: localhost:9042
+    port: 9042
+    local-datacenter: datacenter1
+    keyspace-name: defaultKeyspace
+    schema-action: create_if_not_exists
+
+server:
+  port: 8080
