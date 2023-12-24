@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "97ceb20e-4f22-4350-ad98-900b8ed0dd21",
+		"name": "URL Shortener",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31892513"
+	},
+	"item": [
+		{
+			"name": "Save URL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"longUrl\": \"https://www.KbjRU.com/7JEReqBFeY\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{host_url}}/api/v1/shorten",
+					"protocol": "http",
+					"host": [
+						"{{host_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"shorten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Full URL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{host_url}}/api/v1/variable",
+					"protocol": "http",
+					"host": [
+						"{{host_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"variable"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
