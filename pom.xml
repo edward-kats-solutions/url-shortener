@@ -11,5 +11,8 @@
     <modules>
         <module>url-shortener-server</module>
         <module>url-shortener-load-test</module>
+        <module>url-shortener-common</module>
+        <module>url-shortener-cassandra</module>
+        <module>url-shortener-mongodb</module>
     </modules>
 </project>

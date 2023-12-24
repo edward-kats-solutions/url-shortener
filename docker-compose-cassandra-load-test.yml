@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: url-shortener-server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - CASSANDRA_HOST=cassandra-node1:9042, cassandra-node2:9043, cassandra-node3:9044
+      - CASSANDRA_PORT=9042
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SPRING_PROFILE=cassandra
+      - HOSTNAME=server:8080
+      - HOSTNAME_PROTOCOL=http://
+    restart: always
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  cassandra-node1:
+    image: cassandra:latest
+    environment:
+      - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2,cassandra-node3
+    ports:
+      - "9042:9042"
+
+  cassandra-node2:
+    image: cassandra:latest
+    environment:
+      - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2,cassandra-node3
+    depends_on:
+      - cassandra-node1
+    ports:
+      - "9043:9042"
+
+  cassandra-node3:
+    image: cassandra:latest
+    environment:
+      - CASSANDRA_SEEDS=cassandra-node1,cassandra-node2,cassandra-node3
+    ports:
+      - "9044:9042"
+
+  gatling:
+    build:
+      context: ./url-shortener-load-test
+      dockerfile: Dockerfile
+    depends_on:
+      - server
+    environment:
+      - SERVER_URL=http://server:8080
+      - EXPECTED_MAX_RESPONSE_TIME_MILLIS=500
+      - EXPECTED_MIN_SUCCESSFUL_REQUESTS_PERCENT=95
+      - WARM_UP_USERS_PER_SECOND=50
+      - WARM_UP_DURATION_SECONDS=1
+      - LOAD_TEST_USERS_PER_SECOND=0.52
+      - LOAD_TEST_DURATION_SECONDS=600
+    volumes:
+      - ./gatling-results:/usr/src/load-test/target/gatling

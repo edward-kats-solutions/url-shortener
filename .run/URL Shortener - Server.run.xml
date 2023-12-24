@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="URL Shortener - Server" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="url-shortener-server" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.company.UrlShortenerApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

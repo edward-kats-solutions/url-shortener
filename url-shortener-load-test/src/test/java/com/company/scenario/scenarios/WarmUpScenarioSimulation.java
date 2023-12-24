@@ -1,13 +1,10 @@
 package com.company.scenario.scenarios;
 
-import com.company.configuration.GlobalConfigurationProperties;
+import com.company.properties.GlobalConfigurationProperties;
 import com.company.scenario.BaseScenarioSimulation;
-import io.gatling.javaapi.core.Assertion;
 import io.gatling.javaapi.core.CoreDsl;
 import io.gatling.javaapi.core.PopulationBuilder;
 import io.gatling.javaapi.core.ScenarioBuilder;
-
-import java.util.List;
 
 public class WarmUpScenarioSimulation extends BaseScenarioSimulation {
 

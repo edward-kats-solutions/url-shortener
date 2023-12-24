@@ -6,8 +6,7 @@
     <groupId>com.company</groupId>
     <artifactId>url-shortener-load-test</artifactId>
     <version>0.0.1</version>
-    <name>url-shortener-load-test</name>
-    <description>Url-Shortener Load Test</description>
+    <name>Url Shortener - Load Test</name>
     <properties>
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
@@ -21,6 +20,12 @@
             <version>3.7.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.13.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

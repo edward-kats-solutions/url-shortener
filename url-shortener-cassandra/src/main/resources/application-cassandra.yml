@@ -1,0 +1,7 @@
+spring:
+  cassandra:
+    port: ${CASSANDRA_PORT:9042}
+    contact-points: ${CASSANDRA_HOST:localhost:${spring.cassandra.port}}
+    local-datacenter: datacenter1
+    keyspace-name: "urlShortenerKeySpace"
+    schema-action: create_if_not_exists

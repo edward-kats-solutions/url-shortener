@@ -1,6 +1,6 @@
 package com.company.scenario.scenarios;
 
-import com.company.configuration.GlobalConfigurationProperties;
+import com.company.properties.GlobalConfigurationProperties;
 import com.company.scenario.BaseScenarioSimulation;
 import io.gatling.javaapi.core.Assertion;
 import io.gatling.javaapi.core.CoreDsl;
@@ -45,7 +45,7 @@ public class LoadTestScenarioSimulation extends BaseScenarioSimulation {
                 .feed(RANDOM_URL_GENERATOR_FEEDER)
                 .exec(getApiRequests().shortenUrlRequest())
                 .exitHereIfFailed()
-                .repeat(10)
+                .repeat(365 * 10)
                 .on(getApiRequests().getLongUrl())
                 ;
     }

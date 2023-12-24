@@ -1,7 +1,8 @@
 package com.company.scenario;
 
 import com.company.ApiRequests;
-import com.company.configuration.GlobalConfigurationProperties;
+import com.company.properties.GlobalConfigurationProperties;
+import com.company.utils.HealthCheckGuardUtil;
 import com.company.utils.UrlGeneratorUtil;
 import io.gatling.javaapi.core.*;
 import io.gatling.javaapi.http.HttpDsl;
@@ -33,6 +34,15 @@ public abstract class BaseScenarioSimulation extends Simulation {
 
 
     public BaseScenarioSimulation() {
+        if (!HealthCheckGuardUtil.isHealthy()) {
+            String message = String.format(
+                    "Healthcheck to %s/health did not respond successfully during %s seconds. Simulation did not start and has been aborted...",
+                    GlobalConfigurationProperties.SERVER_URL,
+                    GlobalConfigurationProperties.HEALTHCHECK_WAIT_TIMEOUT_SECONDS
+            );
+            throw new RuntimeException(message);
+        }
+
         this.setUp(
                 getPopulationBuilder()
         )
