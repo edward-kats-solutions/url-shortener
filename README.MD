@@ -42,7 +42,7 @@ This is a **URL-Shortener** project concept
 *Note: you may need to replace `{{host_url}}` with `localhost:8080` or configure as a variable at Postman Environment.*
 
 # II. How to run dockerized Load Test + WebFlux Server + Cassandra Cluster 
-1. Make sure you stop local Intellij Server instance
+1. Execute `mvn install`
 2. Run command: `docker-compose -f .\docker-compose-cassandra-load-test.yml up --build -d`
 3. Results will be uploaded to `gatling-results` folder (shared docker volume)
 
